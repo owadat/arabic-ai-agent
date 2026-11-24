@@ -16,5 +16,8 @@ public class AgentCoreTest {
  check(AgentCore.validNumber("+962 791234567"));check(!AgentCore.validNumber("*123#"));
  check(AgentCore.parse("اشرح لي الجاذبية").get(0).kind==AgentCore.Kind.AI);
  check(AgentCore.parse("اسأل الذكاء اشرح الجاذبية").get(0).arg.equals("اشرح الجاذبية"));
+ check(AgentCore.channelName("فوت على تطبيق واتس اب في قناة عمر وسارة اقرا كل شي واعطيني ملخص").equals("عمر وسارة"));
+ check(AgentCore.channelName("افتح واتساب قناة أخبار الأردن، لخص المحتوى").equals("أخبار الأردن"));
+ check(AgentCore.channelName("افتح يوتيوب قناة عمر").isEmpty());
  System.out.println(count+" tests passed");}
 }

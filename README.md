@@ -1,3 +1,13 @@
+# Arabic AI Agent — v0.2.0
+
+## WhatsApp channel reading (experimental)
+
+The app recognizes Arabic requests such as `فوت على واتساب في قناة عمر وسارة اقرا كل شي واعطيني ملخص`. Alternatively use the dedicated channel-session button. Enable the accessibility service yourself in Android settings, open the session and confirm the channel name. The panel offers explicit navigation, scroll and capture buttons. Open the desired channel manually if automatic label matching fails. Capture only content you are allowed to read; the panel collects exposed visible text (up to 10 captures, 200 unique lines, 12,000 characters for review) during a five-minute session. It does not read images, audio, protected views or full channel history. It may include interface text. Review and redact the editable capture, then explicitly approve sending it to the configured AI provider. The service has no network code and does not send messages, type, or collect passwords. Stop clears the temporary session. Disable accessibility when finished. This is user-guided, not unattended control. Android accessibility behavior and WhatsApp versions vary. Gemini connection settings remain as in v0.1.2; keys are session-only. If a new debug APK signature differs, export important notes before uninstalling the older build.
+
+Build: upload all files in this update to the repository root (keep existing other files and GitHub Actions workflow). The existing prepare.sh workflow copies resources and builds the app. Android compilation and device testing have not been performed in the development environment. The pure Java parser tests and Java syntax checks have been run.
+
+---
+
 # Arabic AI Agent — v0.1.0
 
 تطبيق أندرويد أصلي مفتوح المصدر (MIT)، بواجهة عربية، لتنظيم أوامر المستخدم وتنفيذ خطوات يوافق عليها بنفسه. Android 8+ (API 26).

@@ -22,6 +22,12 @@ public final class AgentCore {
  else if(n.startsWith("اكتب اعلان ")||n.startsWith("اكتب منشور ")||n.startsWith("اكتب سيناريو ")||n.startsWith("برومبت ")){k=Kind.DRAFT;a=s;}
  else if(n.startsWith("اسال الذكاء ")){k=Kind.AI;a=tail(s,2);}
  out.add(new Step(k,a));}return out;}
+ public static String channelName(String input){
+  String raw=input.trim();String normalized=norm(raw).replaceAll("واتس\\s*اب","واتساب");
+  if(!normalized.contains("واتساب")||!normalized.contains("قناة"))return "";
+  Matcher m=Pattern.compile("قناة\\s+(.+?)(?=\\s+(?:اقر[أا]|اقرالي|لخص|اعطيني|أعطيني|واعطيني|وأعطيني|اقرا|واقرأ|واقرأ|اقرأ|اقرالي|وشوف|و?لخّص|و?لخص|و?اقرأ|و?اقرا)(?=\\s|[،,؛.!؟]|$)|[،,؛\\n]|$)",Pattern.DOTALL).matcher(raw);
+  if(!m.find())return "";String value=m.group(1).trim();return value.length()<=150?value:"";
+ }
  public static boolean validNumber(String s){return s!=null&&s.matches("[+0-9 ()-]{3,30}")&&s.replaceAll("[^0-9]","").length()>=3;}
  public static String draft(String s){String n=norm(s);boolean prompt=n.startsWith("برومبت ");String topic=tail(s,prompt?1:2);if(topic.isEmpty())return "أضف اسم المنتج أو موضوع المحتوى.";
  if(prompt)return "الموضوع: "+topic+"\nوصف بصري واقعي، إضاءة طبيعية ناعمة، تكوين واضح، تفاصيل دقيقة، ألوان متوازنة، مساحة للنص، دون كتابة داخل الصورة.\nحدد نسبة العرض حسب المنصة.";
